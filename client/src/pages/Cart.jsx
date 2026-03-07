@@ -291,7 +291,9 @@ const Cart = () => {
                   </p>
                 ))}
                 <p
-                  onClick={() => navigate("/add-address")}
+                  onClick={() =>
+                    user ? navigate("/add-address") : setShowUserLogin(true)
+                  }
                   className="text-indigo-500 text-center cursor-pointer p-2 hover:bg-indigo-500/10"
                 >
                   Add address

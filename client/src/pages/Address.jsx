@@ -15,7 +15,8 @@ const Address = () => {
     country: "",
     phone: "",
   });
-  const { axios, user, setUser, navigate } = useContext(AppContext);
+  const { axios, user, setUser, navigate, setShowUserLogin } =
+    useContext(AppContext);
   const handleChange = (e) => {
     setAddress({ ...address, [e.target.name]: e.target.value });
   };
@@ -42,9 +43,10 @@ const Address = () => {
   };
   useEffect(() => {
     if (!user) {
+      setShowUserLogin(true);
       navigate("/cart");
     }
-  }, []);
+  }, [user]);
   return (
     <div className="mt-12 flex flex-col md:flex-row gap-6 p-4 sm:p-6 bg-gray-100 rounded-lg shadow-md">
       {/* Left Side: Address Fields */}
