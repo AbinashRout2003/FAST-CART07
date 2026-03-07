@@ -46,7 +46,7 @@ const Address = () => {
     }
   }, []);
   return (
-    <div className="mt-12 flex flex-col md:flex-row gap-6 p-6 bg-gray-100 rounded-lg shadow-md">
+    <div className="mt-12 flex flex-col md:flex-row gap-6 p-4 sm:p-6 bg-gray-100 rounded-lg shadow-md">
       {/* Left Side: Address Fields */}
       <div className="flex-1 bg-white p-6 rounded-lg shadow">
         <h2 className="text-xl font-semibold text-gray-700 mb-4">
@@ -54,7 +54,7 @@ const Address = () => {
         </h2>
         <form
           onSubmit={submitHanlder}
-          className="grid grid-cols-1 md:grid-cols-2 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4"
         >
           <div>
             <label className="block text-gray-600">First Name</label>
