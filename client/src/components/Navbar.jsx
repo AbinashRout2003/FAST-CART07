@@ -15,13 +15,8 @@ const Navbar = () => {
     searchQuery,
     setSearchQuery,
     cartCount,
+    logout,
   } = useAppContext();
-
-  const logout = () => {
-    setUser(null);
-    navigate("/");
-    toast.success("Logged Out");
-  };
 
   return (
     <nav className="flex items-center justify-between px-6 md:px-16 py-4 border-b border-gray-300 bg-white relative">

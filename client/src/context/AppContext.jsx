@@ -57,8 +57,25 @@ export const AppContextProvider = ({ children }) => {
     }
   };
 
+  // Verify session on mount
+  const verifySession = async () => {
+    try {
+      const { data } = await api.get("/api/user/is-auth");
+      if (data.success) {
+        setUser(data.user);
+      } else {
+        setUser(null);
+      }
+    } catch (error) {
+      setUser(null);
+    }
+  };
+
   useEffect(() => {
     fetchProducts();
+    if (localStorage.getItem("user")) {
+      verifySession();
+    }
   }, []);
 
   // Cart functions
@@ -117,6 +134,18 @@ export const AppContextProvider = ({ children }) => {
     }
   };
 
+  const logout = async () => {
+    try {
+      await api.get("/api/user/logout");
+      setUser(null);
+      localStorage.removeItem("user");
+      toast.success("Logged Out");
+      navigate("/");
+    } catch (error) {
+      toast.error("Logout failed");
+    }
+  };
+
   const value = {
     navigate,
     products,
@@ -135,8 +164,9 @@ export const AppContextProvider = ({ children }) => {
     setShowUserLogin,
     isSeller,
     setIsSeller,
-    sellerLogout, // add logout to context
+    sellerLogout,
     fetchProducts,
+    logout,
     axios: api,
   };
 

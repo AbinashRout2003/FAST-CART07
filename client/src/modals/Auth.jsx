@@ -19,6 +19,7 @@ const Auth = () => {
       if (data.success) {
         toast.success(data.message);
         setUser(data.user);
+        localStorage.setItem("user", JSON.stringify(data.user));
         setShowUserLogin(false);
       } else {
         toast.error(data.message);

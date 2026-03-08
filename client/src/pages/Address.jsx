@@ -42,7 +42,7 @@ const Address = () => {
     }
   };
   useEffect(() => {
-    if (!user) {
+    if (user === null) {
       setShowUserLogin(true);
     }
   }, [user, setShowUserLogin]);
