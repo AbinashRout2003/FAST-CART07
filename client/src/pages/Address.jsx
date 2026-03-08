@@ -184,16 +184,6 @@ const Address = () => {
         </div>
       </form>
     </div>
-
-      {/* Right Side: Image */ }
-  <div className="flex-1 flex items-center justify-center">
-    <img
-      src={assets.add_address_iamge}
-      alt="Address Illustration"
-      className="w-full max-w-xs rounded-lg shadow-md"
-    />
-  </div>
-    </div >
   );
 };
 
