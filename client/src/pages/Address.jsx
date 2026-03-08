@@ -45,7 +45,7 @@ const Address = () => {
     if (!user) {
       setShowUserLogin(true);
     }
-  }, [user]);
+  }, [user, setShowUserLogin]);
   return (
     <div className="mt-12 max-w-lg mx-auto bg-white p-6 sm:p-8 rounded-lg shadow-md">
       <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">

@@ -18,7 +18,6 @@ const Auth = () => {
       });
       if (data.success) {
         toast.success(data.message);
-        navigate("/");
         setUser(data.user);
         setShowUserLogin(false);
       } else {
