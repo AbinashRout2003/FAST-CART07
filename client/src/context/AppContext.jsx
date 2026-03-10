@@ -15,6 +15,21 @@ export const AppContextProvider = ({ children }) => {
     withCredentials: true,                     // send cookies
   });
 
+  // Global 401 Interceptor
+  api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      if (error.response?.status === 401) {
+        setUser(null);
+        localStorage.removeItem("user");
+        if (error.config.url !== "/api/user/is-auth") {
+          toast.error("Session expired. Please login again.");
+        }
+      }
+      return Promise.reject(error);
+    }
+  );
+
   // Products & Cart state
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState({});
@@ -67,7 +82,7 @@ export const AppContextProvider = ({ children }) => {
         setUser(null);
       }
     } catch (error) {
-      setUser(null);
+      // Interceptor handles setUser(null)
     }
   };
 

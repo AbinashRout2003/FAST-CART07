@@ -33,11 +33,6 @@ const Address = () => {
         toast.error(data.message);
       }
     } catch (error) {
-      if (error.response?.data?.message?.includes("Unauthorized")) {
-        toast.error("Session expired. Please login again.");
-        setUser(null);
-        return;
-      }
       toast.error(error.response?.data?.message || error.message);
     }
   };

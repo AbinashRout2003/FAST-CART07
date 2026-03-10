@@ -4,8 +4,8 @@ import jwt from "jsonwebtoken";
 
 const cookieOptions = {
   httpOnly: true,
-  secure: process.env.NODE_ENV === "production",
-  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  secure: true, // Force secure for cross-site cookies
+  sameSite: "none", // Force none for cross-site cookies
   maxAge: 7 * 24 * 60 * 60 * 1000,
   path: "/",
 };
@@ -140,8 +140,8 @@ export const logout = async (req, res) => {
   try {
     res.clearCookie("token", {
       httpOnly: true,
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-      secure: process.env.NODE_ENV === "production",
+      sameSite: "none",
+      secure: true,
       path: "/",
     });
 
